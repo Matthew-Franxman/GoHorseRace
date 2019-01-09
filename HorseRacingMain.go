@@ -7,17 +7,17 @@ import (
 	"time"
 )
 
-//im gonna ttry and help y'all learn how all this shit works
+//im gonna try and help y'all learn how all this shit works
 //so below each one of these functions are called goroutines
 //basically what that means is instead of running in order, each one of these runs simultaneously with the main function
-//but that creates a problem at times cause sometimes the main will terminae before the goroutines are done running
+//but that creates a problem at times cause sometimes the main will terminate before the goroutines are done running
 //but we'll get into that more later
 
 //so this is our first of five goroutines blueHorse
 //it requires a channel to run
 //basically a channel is a pipe that connects all of the routines together
 //for thisprogram all of the pipes just go straight through the main
-//I arbitrarly just named all of their channels ch but they are all different in the main
+//I arbitrarily just named all of their channels ch but they are all different in the main
 //so each of these five functions are running simultaneously with the main
 func blueHorse(ch chan string) {
 	ch <- "Blue Horse" //this means that we are throwing 'Blue Horse' into the channel
@@ -60,11 +60,11 @@ func main() {
 		go greenHorse(ch5)
 		time.Sleep(3 * time.Second) //sleep means the computer waits for 3 seconds
 
-		//the reasion the sleeps are in means that all of the pipes are garunteed to have data by the time the main wakes back up
+		//the reason the sleeps are in means that all of the pipes are guaranteed to have data by the time the main wakes back up
 		//so that way the computer is forced to pick at random which channel to pull from
 		//when the main pulls from a channel, it takes it completely out of there and the channel is now empty
 		//select works as a switch for channels, picking 1 to choose from and returning something
-		//in this case that something is a Println witht the specific horse in the line
+		//in this case that something is a Println with the specific horse in the line
 		if i == 2 {
 			fmt.Println("They are heading down the stretch!")
 			time.Sleep(2 * time.Second)
